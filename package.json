@@ -1,0 +1,49 @@
+{
+  "name": "nuxt-app",
+  "version": "1.0.0",
+  "author": "mengleangtuong",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev --host",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore .",
+    "lint:fix": "eslint --ext .js,.ts,.vue --ignore-path .gitignore --fix .",
+    "format": "prettier --write .",
+    "remove-package": "rm -rf node_modules yarn.lock package-lock.json .nuxt"
+  },
+  "dependencies": {
+    "@nuxt/icon": "^1.4.10",
+    "@pinia/nuxt": "^0.5.4",
+    "@vueuse/core": "^11.0.3",
+    "@vueuse/nuxt": "^11.0.3",
+    "nuxt": "^3.13.0",
+    "nuxt-icon": "^1.0.0-beta.7",
+    "pinia": "^2.2.2",
+    "vue": "latest"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^0.5.2",
+    "@nuxt/eslint-config": "^0.5.2",
+    "@nuxt/types": "^2.18.1",
+    "@nuxtjs/color-mode": "^3.4.4",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@nuxtjs/tailwindcss": "^6.12.1",
+    "@types/node": "^22.5.0",
+    "@typescript-eslint/eslint-plugin": "^8.2.0",
+    "@typescript-eslint/parser": "^8.2.0",
+    "@vue/typescript-plugin": "^2.0.29",
+    "eslint": "^9.9.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-vue": "^9.27.0",
+    "prettier": "^3.3.3",
+    "sass": "^1.77.8",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.2.0"
+  }
+}
