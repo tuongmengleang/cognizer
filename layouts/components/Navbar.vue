@@ -1,79 +1,116 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import BtnBurger from '~/layouts/components/BtnBurger.vue'
+import DrawerNavbar from '~/layouts/components/DrawerNavbar.vue'
+
+/* STATES */
+const $appStore = useAppConfigStore()
+const logo = ref<string>(
+  'https://english.pku.edu.cn/Uploads/Bden/Picture/2020/11/25/s5fbdbf048bc00.png'
+)
+</script>
 
 <template>
-  <header class="absolute inset-x-0 top-0 z-50">
-    <nav aria-label="Global" class="flex items-center justify-between p-6 lg:px-8">
-      <div class="flex lg:flex-1">
-        <a class="-m-1.5 p-1.5" href="#">
-          <span class="sr-only">Your Company</span>
-          <img alt="" class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600">
-        </a>
-      </div>
-      <div class="flex lg:hidden">
-        <button class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700" type="button">
-          <span class="sr-only">Open main menu</span>
-          <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5"
-               viewBox="0 0 24 24">
-            <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </button>
-      </div>
-      <div class="hidden lg:flex lg:gap-x-12">
-        <a class="text-sm font-semibold leading-6 text-gray-900" href="#">Product</a>
-        <a class="text-sm font-semibold leading-6 text-gray-900" href="#">Features</a>
-        <a class="text-sm font-semibold leading-6 text-gray-900" href="#">Marketplace</a>
-        <a class="text-sm font-semibold leading-6 text-gray-900" href="#">Company</a>
-      </div>
-      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a class="text-sm font-semibold leading-6 text-gray-900" href="#">Log in <span aria-hidden="true">&rarr;</span></a>
-      </div>
-    </nav>
-    <!-- Mobile menu, show/hide based on menu open state. -->
-    <div aria-modal="true" class="lg:hidden">
-      <!-- Background backdrop, show/hide based on slide-over state. -->
-      <div class="fixed inset-0 z-50"></div>
-      <div
-        class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-        <div class="flex items-center justify-between">
-          <a class="-m-1.5 p-1.5" href="#">
-            <span class="sr-only">Your Company</span>
-            <img alt="" class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600">
+  <nav :style="{ '--navbar-height': $appStore.navbarHeight }" class="navbar">
+    <div class="navbar-top">
+      <ul class="navbar-top--menus">
+        <li>
+          <a>Identity</a>
+        </li>
+        <li>
+          <a>Giving</a>
+        </li>
+        <li>
+          <a>Old</a>
+        </li>
+      </ul>
+    </div>
+    <div class="navbar-base">
+      <!-- Logo -->
+      <img
+        v-if="false"
+        alt="Logo"
+        class="navbar-base--logo"
+        src="https://t3.ftcdn.net/jpg/04/91/76/62/360_F_491766294_h4j7LbW2YgfbNHhq7F8GboIc1XyBSEY5.jpg"
+      />
+      <img :src="logo" alt="Logo" class="navbar-base--logo" />
+
+      <ul class="navbar-base--menus">
+        <li v-for="({ title }, $i) in $appStore.menus" :key="$i">
+          <a>{{ title }}</a>
+        </li>
+        <li>
+          <a
+            class="block w-8 h-8 grid place-items-center bg-primary-600 rounded-full"
+          >
+            <Icon class="text-xl text-white" name="ph:magnifying-glass-bold" />
           </a>
-          <button class="-m-2.5 rounded-md p-2.5 text-gray-700" type="button">
-            <span class="sr-only">Close menu</span>
-            <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5"
-                 viewBox="0 0 24 24">
-              <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
-        </div>
-        <div class="mt-6 flow-root">
-          <div class="-my-6 divide-y divide-gray-500/10">
-            <div class="space-y-2 py-6">
-              <a
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                href="#">Product</a>
-              <a
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                href="#">Features</a>
-              <a
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                href="#">Marketplace</a>
-              <a
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                href="#">Company</a>
-            </div>
-            <div class="py-6">
-              <a
-                class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                href="#">Log
-                in</a>
-            </div>
-          </div>
-        </div>
+        </li>
+      </ul>
+
+      <div class="navbar-base--drawer">
+        <BtnBurger />
+        <Teleport to="#teleports">
+          <DrawerNavbar />
+        </Teleport>
       </div>
     </div>
-  </header>
+  </nav>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import '@/@core/scss/_mixins.scss';
+
+.navbar {
+  @apply block w-full h-5 fixed top-0 z-50;
+
+  &::before {
+    content: '';
+    @apply absolute top-0 w-full h-[var(--navbar-height)] z-[-1]
+    bg-gradient-to-b from-black/70 to-transparent;
+  }
+
+  &-top {
+    @apply w-full h-8 flex items-center justify-end px-4 md:px-10 lg:px-20;
+
+    &--menus {
+      @apply flex items-center divide-x divide-gray-500;
+
+      li {
+        @apply block px-7 text-sm text-gray-200 font-medium;
+        a {
+          @apply block w-full h-full;
+        }
+
+        &:first-child {
+          @apply pl-0;
+        }
+
+        &:last-child {
+          @apply pr-0;
+        }
+      }
+    }
+  }
+
+  &-base {
+    @apply w-full flex items-center justify-between px-4 md:px-10 lg:px-20 py-4;
+
+    &--logo {
+      @apply w-auto h-10 object-cover;
+    }
+
+    &--menus {
+      @apply hidden md:flex items-center gap-4 lg:gap-7 xl:gap-10;
+
+      li {
+        @apply text-sm lg:text-base xl:text-lg text-gray-100 font-semibold tracking-wider cursor-pointer;
+        //font-size: clamp(0.75rem, 0.4821rem + 0.8571vw, 1.125rem);
+      }
+    }
+
+    &--drawer {
+      @apply block md:hidden;
+    }
+  }
+}
+</style>

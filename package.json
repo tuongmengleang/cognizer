@@ -20,10 +20,12 @@
     "@nuxt/icon": "^1.4.10",
     "@pinia/nuxt": "^0.5.4",
     "@vueuse/core": "^11.0.3",
+    "@vueuse/motion": "^2.2.3",
     "@vueuse/nuxt": "^11.0.3",
     "nuxt": "^3.13.0",
     "nuxt-icon": "^1.0.0-beta.7",
     "pinia": "^2.2.2",
+    "swiper": "^11.1.11",
     "vue": "latest"
   },
   "devDependencies": {
