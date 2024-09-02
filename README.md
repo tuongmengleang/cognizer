@@ -21,7 +21,7 @@ Nuxt 3 template and starter with a lot of useful features. Nuxt 3 + Tailwindcss 
 
 - clone this repository
   ```bash
-  git clone git@github.com:tuongmengleang/nuxt3-starter.git
+  git clone git@github.com:tuongmengleang/cognizer.git
   ```
 - install dependencies
   ```bash
