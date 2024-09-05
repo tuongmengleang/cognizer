@@ -67,6 +67,8 @@ export default defineNuxtConfig({
     ],
   },
 
+  tailwindcss: {},
+
   /* 👉🏼Pinia Module */
   pinia: {
     storesDirs: ['~/stores/**', '#/stores/**', '@/stores/**'],
